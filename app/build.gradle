@@ -1,0 +1,59 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.methew5.template'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.methew5.template"
+        minSdk 25
+        targetSdk 33
+        versionCode 1
+        versionName "0.0.1"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    // Ktx
+    implementation "androidx.core:core-ktx:$ver.core_ktx"
+    implementation "androidx.fragment:fragment-ktx:$ver.fragment_ktx"
+
+    // Android
+    implementation "androidx.appcompat:appcompat:$ver.app_compat"
+    implementation "com.google.android.material:material:$ver.material"
+    implementation "androidx.constraintlayout:constraintlayout:$ver.constraint_layout"
+
+    // DI
+    implementation "com.google.dagger:hilt-android:$ver.hilt"
+    kapt "com.google.dagger:hilt-compiler:$ver.hilt"
+
+    // Testing
+    testImplementation "junit:junit:$ver.junit"
+    androidTestImplementation "androidx.test.ext:junit:$ver.junit_ktx"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$ver.espresso"
+}
